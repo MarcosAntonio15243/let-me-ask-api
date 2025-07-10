@@ -2,16 +2,19 @@
 @baseUrl = http://localhost:3333
 
 # Health check
+# @name healthCheck
 GET {{baseUrl}}/health
 
 ###
 
 # Get rooms
+# @name getRooms
 GET {{baseUrl}}/rooms
 
 ###
 
 # Create room
+# @name createRoom
 POST {{baseUrl}}/rooms
 # Deve-se colocar isso se não ocorre erro 415 de unsuported media type
 Accept: application/json
@@ -21,3 +24,13 @@ Content-Type: application/json
   "name": "This is a new room name",
   "description": "This is a new room description"
 }
+
+###
+
+@roomId = {{getRooms.response.body.$.[1].id}}
+
+###
+
+# Get room questions
+# @name getRoomQuestions
+GET {{baseUrl}}/rooms/{{roomId}}/questions
