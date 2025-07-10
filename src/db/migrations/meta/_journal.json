@@ -15,6 +15,13 @@
       "when": 1752104345868,
       "tag": "0001_clear_black_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752105404608,
+      "tag": "0002_nasty_hitman",
+      "breakpoints": true
     }
   ]
 }

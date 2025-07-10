@@ -8,3 +8,16 @@ GET {{baseUrl}}/health
 
 # Get rooms
 GET {{baseUrl}}/rooms
+
+###
+
+# Create room
+POST {{baseUrl}}/rooms
+# Deve-se colocar isso se não ocorre erro 415 de unsuported media type
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "This is a new room name",
+  "description": "This is a new room description"
+}

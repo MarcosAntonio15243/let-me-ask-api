@@ -14,8 +14,8 @@ await seed(db, schema).refine((r) => {
       },
     },
     questions: {
-      count: 20
-    }
+      count: 20,
+    },
   };
 });
 
