@@ -10,6 +10,7 @@ An API developed during **NLW Agents** by **Rocketseat** for live streams and br
 - [Setup and Configuration](#setup-and-configuration)
 - [Running the Project](#running-the-project)
 - [API Endpoints](#api-endpoints)
+- [Front-end](#front-end)
 - [Author](#author)
 
 ## Technologies
@@ -122,9 +123,15 @@ The default base url is: `http://localhost:3333`.
 - `GET /rooms/{roomId}/questions` - Retrieves all questions from a specific room.
 - `POST /rooms/{roomId}/questions` - Submits a new question to a specific room.
 
+## Front-end
+
+Want to try the interface?
+
+Check out the web app here: [Let Me Ask Web](https://github.com/MarcosAntonio15243/let-me-ask-web)
+
 ## Author
 
-Made with  [Marcos Antonio](https://github.com/MarcosAntonio15243).
+Made by [Marcos Antonio](https://github.com/MarcosAntonio15243).
 
 - 💻 Full Stack developer dedicated to building complete solutions by combining modern, functional user interfaces with robust back-end architectures.
 - 📚 This project represents my first experience using tools like **Drizzle ORM** and the **pgvector** extension, with a focus on AI-powered APIs based on multimedia content.
