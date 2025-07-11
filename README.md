@@ -6,13 +6,13 @@ An API developed during **NLW Agents** by **Rocketseat** for live streams and br
 
 ## 📑 Table of Contents
 
-- [Technologies](#-technologies)
-- [Setup and Configuration](#-setup-and-configuration)
-- [Running the Project](#-running-the-project)
-- [API Endpoints](#-api-endpoints)
-- [Author](#-author)
+- [Technologies](#technologies)
+- [Setup and Configuration](#setup-and-configuration)
+- [Running the Project](#running-the-project)
+- [API Endpoints](#api-endpoints)
+- [Author](#author)
 
-## 🚀 Technologies
+## Technologies
 
 The project was developed using the following stack:
 
@@ -94,7 +94,7 @@ If you want to seed the database with initial data, run:
 npm run db:seed
 ```
 
-## ▶️ Running the Project
+## Running the Project
 
 Once all setup steps are completed, run the following command to start the project:
 
@@ -110,7 +110,7 @@ Once all setup steps are completed, run the following command to start the proje
   npm start
   ```
 
-## 📚 API Endpoints
+## API Endpoints
 
 You can explore and test the available API endpoints using the documentation below.
 
@@ -122,7 +122,7 @@ The default base url is: `http://localhost:3333`.
 - `GET /rooms/{roomId}/questions` - Retrieves all questions from a specific room.
 - `POST /rooms/{roomId}/questions` - Submits a new question to a specific room.
 
-## 🙋‍♂️ Author
+## Author
 
 Made with  [Marcos Antonio](https://github.com/MarcosAntonio15243).
 
