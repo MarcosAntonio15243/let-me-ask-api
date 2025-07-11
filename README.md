@@ -24,7 +24,7 @@ The project was developed using the following stack:
 - **Docker** — database containerization for easy setup and deployment
 - **Biome** — code linting and formatting to maintain quality and consistency
 
-## ⚙️ Setup and Configuration
+## Setup and Configuration
 
 Below is a step-by-step guide for running this project.
 
