@@ -3,7 +3,7 @@ import type { FastifyPluginCallbackZod } from 'fastify-type-provider-zod';
 import { z } from 'zod/v4'; // Fastfy type acima já utiliza o v4
 import { db } from '../../db/connection.ts';
 import { schema } from '../../db/schema/index.ts';
-import { generateEmbeddings } from '../../services/gemini.ts';
+import { generateAnswer, generateEmbeddings } from '../../services/gemini.ts';
 
 export const createQuestion: FastifyPluginCallbackZod = (app) => {
   app.post(
@@ -25,7 +25,7 @@ export const createQuestion: FastifyPluginCallbackZod = (app) => {
       const embeddings = await generateEmbeddings(question);
       const embeddingsAsString = `[${embeddings.join(',')}]`;
 
-      const chunks = db
+      const chunks = await db
         .select({
           id: schema.audioChunks.id,
           transcription: schema.audioChunks.transcription,
@@ -43,23 +43,33 @@ export const createQuestion: FastifyPluginCallbackZod = (app) => {
         )
         .limit(3);
 
-      return chunks;
+      let answer: string | null = null;
 
-      // const result = await db
-      //   .insert(schema.questions)
-      //   .values({
-      //     roomId,
-      //     question,
-      //   })
-      //   .returning(); // Retorna dados da inserção, sem returning é retornado apenas count de inserted
+      if (chunks.length > 0) {
+        const transcriptions = chunks.map((chunk) => chunk.transcription);
 
-      // const insertedQuestion = result[0];
+        answer = await generateAnswer(question, transcriptions);
+      }
 
-      // if (!insertedQuestion) {
-      //   throw new Error('Failed to create new room.');
-      // }
+      const result = await db
+        .insert(schema.questions)
+        .values({
+          roomId,
+          question,
+          answer,
+        })
+        .returning(); // Retorna dados da inserção, sem returning é retornado apenas count de inserted
 
-      // return reply.status(201).send({ questionId: insertedQuestion.id });
+      const insertedQuestion = result[0];
+
+      if (!insertedQuestion) {
+        throw new Error('Failed to create new room.');
+      }
+
+      return reply.status(201).send({
+        questionId: insertedQuestion.id,
+        answer,
+      });
     }
   );
 };
